@@ -613,7 +613,7 @@ img {
 /* =Subscribe= */
 
 .subscribe {
-  margin-left: 93px;
+  margin-left: auto;
 }
 
 .subscribe-text {
@@ -854,32 +854,36 @@ img {
 
   width: 100vw;
   height: 100vh;
+  opacity: 1;
 
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .backdrop.is-hidden {
-  transform: scale(0.5);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5); 
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-
-  transform: translate(-50%, -50%);
+  padding: 40px;
   width: 528px;
-  height: 581px;
 
   background: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn {
@@ -904,10 +908,6 @@ img {
 .modal-close-btn:hover,
 .modal-close-btn:focus {
   fill: var(--accent-color);
-}
-
-.contact-form {
-  padding: 40px;
 }
 
 .contact-form-text {
